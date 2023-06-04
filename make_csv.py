@@ -4,15 +4,25 @@ import csv
 import datetime
 
 dir_path = "/home/kali/Downloads/MalwareProject/"
-csv_path = "/home/kali/Downloads/NT230.N22.ATCL-Group5/folder_info.csv"
+csv_path = "/home/kali/Downloads/Dataset/"
 
-# List all files in the folder and their info
-files_info = []
+def write_to_csv(folder_name, files_info):
+    out_path = os.path.join(csv_path, folder_name)
+    # Write files_info to CSV file
+    with open(out_path + ".csv", 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(["File Name", "Label"])  # Header row
+        for file_info in files_info:
+            writer.writerow(file_info)
 
 # Loop through all folders in specified directory
 for folder_name in os.listdir(dir_path):
+    # List all files in the folder and their info
+    files_info = []
+
     folder_path = os.path.join(dir_path, folder_name)
     print(folder_path + "\n")
+    
     # Check if item in directory is a folder
     if os.path.isdir(folder_path):
             for file_name in os.listdir(folder_path):
@@ -23,10 +33,4 @@ for folder_name in os.listdir(dir_path):
                     else:
                         label = 1 # Malware
                     files_info.append([file_path, label])
-
-# Write files_info to CSV file
-with open(csv_path, 'w', newline='') as csvfile:
-    writer = csv.writer(csvfile)
-    writer.writerow(["File Name", "Label"])  # Header row
-    for file_info in files_info:
-        writer.writerow(file_info)
+    write_to_csv(folder_name, files_info)
