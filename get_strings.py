@@ -17,8 +17,6 @@ for file_name in os.listdir(folder_path):
             # create CSV reader object
             reader = csv.reader(input_file)
             next(reader, None) # skip the header
-            # create CSV writer object
-            writer = csv.writer(output_file) 
             
             # iterate over each row in the input CSV file
             for row in reader:
@@ -36,5 +34,7 @@ for file_name in os.listdir(folder_path):
                 # create a list of strings from decoded output that are not empty/only whitespace
                 extracted_strings = [s.strip() for s in decoded_output.split('\n') if len(s.strip()) > 0]
                 
-                # write the extracted strings to the csv file: 1 row contains list of strings extracted from a file
-                writer.writerow(extracted_strings)
+                # write the extracted strings to the text file: 1 row contains list of strings extracted from a file
+                for string in extracted_strings:
+                    output_file.write(string + " ")
+                output_file.write("\n")

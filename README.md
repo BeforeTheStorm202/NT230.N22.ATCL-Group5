@@ -5,3 +5,5 @@ Our implementation for the paper "Applying NLP techniques to malware detection i
 1. Construct a list of files and assign labels (make_csv.py).
 
 2. Extract strings from files with the strings command on Linux (get_strings.py).
+
+3. Split into train & test sets with the ratio of 60:40 (train_test_split.py).
