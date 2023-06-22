@@ -8,6 +8,6 @@ Our implementation for the paper "Applying NLP techniques to malware detection i
 
 3. Split into train & test sets with the ratio of 60:40 (train_test_split.py).
 
-4. Derive feature vectors from Doc2Vec model (Doc2Vec.ipynb)
+4. Derive feature vectors from Doc2Vec and LSI model.
 
-5. Train 4 models from feature vectors extracted from Doc2Vec model.
+5. Train 4 models from feature vectors extracted from Doc2Vec|LSI model(s).
